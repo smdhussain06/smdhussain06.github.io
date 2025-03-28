@@ -1,13 +1,18 @@
+// Add scroll animation logic
+
 document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = document.getElementById('contact-form');
+  const animatedElements = document.querySelectorAll('.scroll-animation');
 
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for reaching out! I will get back to you soon.');
-        contactForm.reset();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
+  }, {
+    threshold: 0.1
+  });
 
-    // Add animations using GSAP
-    gsap.from('header', { duration: 1, y: -50, opacity: 0 });
-    gsap.from('section', { duration: 1, y: 50, opacity: 0, stagger: 0.3 });
+  animatedElements.forEach((el) => observer.observe(el));
 });
