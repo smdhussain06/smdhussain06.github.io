@@ -626,7 +626,7 @@ document.head.insertAdjacentHTML('beforeend', `
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
   }
   
-  /* Social ribbon styling - now visible and styled like Sunny's */
+  /* Social ribbon styling - now visible and minimal */
   .social-ribbon {
     position: fixed;
     left: 20px;
