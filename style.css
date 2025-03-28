@@ -107,11 +107,6 @@ ul {
   display: none;
 }
 
-/* Remove Contact Ribbon */
-.contact-ribbon {
-  display: none;
-}
-
 /* Header & Navigation */
 .header {
   position: fixed;
@@ -545,280 +540,75 @@ section {
   gap: var(--spacing-lg);
 }
 
+/* Hover-tilt effect for project cards */
 .project-card {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--bg-color);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
-  border: 1px solid var(--border-color);
+    perspective: 1000px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.project-image {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
+.project-preview {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all var(--transition-normal);
+.project-preview:hover .preview-mockup {
+    transform: translateX(-100%);
 }
 
-.project-card:hover .project-image img {
-  transform: scale(1.05);
+.project-preview:hover .preview-code {
+    transform: translateX(0);
 }
 
-.project-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: var(--spacing-md);
-  opacity: 0;
-  transition: all var(--transition-normal);
+.preview-mockup, .preview-code {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
 }
 
-.project-card:hover .project-overlay {
-  opacity: 1;
+.preview-code {
+    transform: translateX(100%);
 }
 
-.tech-stack {
-  display: flex;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-sm);
+/* Smooth overlay transition for "View Details" */
+.project-link.view-details {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    color: #4F46E5;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.tech-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  color: var(--text-dark);
+.project-link.view-details::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #4F46E5;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
 }
 
-.project-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
+.project-link.view-details:hover {
+    color: #FF6B6B;
 }
 
-.project-stats span {
-  padding: 2px 8px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  color: var(--text-dark);
+.project-link.view-details:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
-
-.project-info {
-  padding: var(--spacing-lg);
-}
-
-.project-info h3 {
-  font-size: 1.2rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.project-info p {
-  color: var(--text-light);
-  font-size: 0.9rem;
-  margin-bottom: var(--spacing-md);
-}
-
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  color: var(--accent-color);
-  font-weight: 500;
-}
-
-.project-link i {
-  margin-left: var(--spacing-xs);
-  transition: transform var(--transition-fast);
-}
-
-.project-link:hover i {
-  transform: translateX(3px);
-}
-
-/* Contact Section */
-.contact-section {
-  position: relative;
-}
-
-.contact-intro {
-  text-align: left;
-  max-width: 600px;
-  margin-bottom: var(--spacing-xl);
-  color: var(--text-light);
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: var(--spacing-lg);
-}
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-}
-
-.contact-card {
-  background: var(--bg-color);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
-  border: 1px solid var(--border-color);
-}
-
-.contact-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.contact-card i {
-  font-size: 1.5rem;
-  margin-bottom: var(--spacing-sm);
-  color: var(--accent-color);
-}
-
-.contact-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: var(--spacing-xs);
-}
-
-.contact-card p {
-  color: var(--text-light);
-  font-size: 0.9rem;
-  margin-bottom: 0;
-}
-
-.contact-form {
-  background: var(--bg-color);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
-}
-
-.form-group {
-  margin-bottom: var(--spacing-md);
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: var(--spacing-xs);
-  color: var(--text-light);
-}
-
-.form-group input, .form-group textarea {
-  width: 100%;
-  padding: var(--spacing-md);
-  background: var(--bg-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  color: var(--text-dark);
-  font-family: var(--font-sans);
-  transition: all var(--transition-fast);
-}
-
-.form-group input:focus, .form-group textarea:focus {
-  outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 1px var(--accent-color);
-}
-
-/* Modal */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition-normal);
-}
-
-.modal.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.modal-content {
-  background: var(--bg-color);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
-  max-width: 500px;
-  width: 90%;
-  position: relative;
-  border: 1px solid var(--border-color);
-}
-
-.close-modal {
-  position: absolute;
-  top: var(--spacing-md);
-  right: var(--spacing-md);
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--text-light);
-}
-
-.close-modal:hover {
-  color: var(--text-dark);
-}
-
-.collab-form {
-  margin-top: var(--spacing-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-}
-
-.collab-form input, .collab-form textarea {
-  padding: var(--spacing-md);
-  background: var(--bg-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  color: var(--text-dark);
-  font-family: var(--font-sans);
-}
-
-.collab-form input:focus, .collab-form textarea:focus {
-  outline: none;
-  border-color: var(--accent-color);
-}
-
-.collab-form textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
 /* Footer */
 .footer {
   background: var(--light-gray);
@@ -983,4 +773,72 @@ section {
   left: 0;
   color: var(--accent-color);
   font-weight: 500;
+}
+
+/* Fixed-position contact rail */
+.contact-ribbon {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 100;
+}
+
+.contact-email, .contact-whatsapp, .instagram-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.contact-email:hover, .contact-whatsapp:hover, .instagram-preview:hover {
+    background: linear-gradient(135deg, #4F46E5, #10B981);
+    color: #ffffff;
+}
+
+.contact-email .copy-email {
+    display: none;
+    font-size: 0.8rem;
+    color: #10B981;
+}
+
+.contact-email:hover .copy-email {
+    display: inline;
+}
+
+.instagram-preview {
+    position: relative;
+}
+
+.insta-stories {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.instagram-preview:hover .insta-stories {
+    opacity: 1;
+    visibility: visible;
+}
+
+.story-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF6B6B, #4F46E5);
 }

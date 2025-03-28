@@ -640,5 +640,46 @@ def train_model(input_tensors, labels):
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.from('.hero-section', {
+                opacity: 0,
+                y: 50,
+                duration: 1.5,
+                scrollTrigger: {
+                    trigger: '.hero-section',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            // Neural network background animation
+            const canvas = document.createElement('canvas');
+            canvas.id = 'neural-network-bg';
+            document.querySelector('.hero-section').appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            function drawNeuralNetwork() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#4F46E5';
+                for (let i = 0; i < 100; i++) {
+                    ctx.beginPath();
+                    ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            drawNeuralNetwork();
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                drawNeuralNetwork();
+            });
+        });
+    </script>
 </body>
 </html>

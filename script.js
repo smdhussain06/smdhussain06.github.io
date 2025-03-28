@@ -647,5 +647,171 @@ document.head.insertAdjacentHTML('beforeend', `
     background: linear-gradient(135deg, #38bdf8, #818cf8);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
+  
+  .terminal-body {
+    background: #1e1e1e;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 20px;
+  }
+  
+  .terminal-body p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .terminal-body .blink {
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 </style>
 `);
+
+// Horizontal scroll navigation for projects
+const projectSlider = document.querySelector('.projects-slider');
+const prevArrow = document.querySelector('.prev-arrow');
+const nextArrow = document.querySelector('.next-arrow');
+
+prevArrow.addEventListener('click', () => {
+    projectSlider.scrollBy({ left: -300, behavior: 'smooth' });
+});
+
+nextArrow.addEventListener('click', () => {
+    projectSlider.scrollBy({ left: 300, behavior: 'smooth' });
+});
+
+// Terminal-style command line animation
+const terminalBody = document.querySelector('.terminal-body');
+const commands = [
+    '$ run DesignAI --mode=creative --engineer=Hussain',
+    'Initializing creative environment...',
+    'Loading design patterns ███████████ 100%',
+    'Integration of design and AI components complete.',
+    'Ready to visualize innovation.'
+];
+
+let commandIndex = 0;
+function typeCommand() {
+    if (commandIndex < commands.length) {
+        const line = document.createElement('p');
+        line.textContent = commands[commandIndex];
+        terminalBody.appendChild(line);
+        commandIndex++;
+        setTimeout(typeCommand, 1000);
+    } else {
+        const blink = document.createElement('p');
+        blink.classList.add('blink');
+        blink.textContent = 'Ready to visualize innovation.';
+        terminalBody.appendChild(blink);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', typeCommand);
+
+// Dynamic skill graph showing design/AI competency overlap
+const skillGraphContainer = document.querySelector('.graph-visual');
+
+function createSkillGraph() {
+    const canvas = document.createElement('canvas');
+    canvas.width = skillGraphContainer.offsetWidth;
+    canvas.height = skillGraphContainer.offsetHeight;
+    skillGraphContainer.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+
+    const skills = [
+        { label: 'Design', value: 80, color: '#FF6B6B' },
+        { label: 'AI', value: 70, color: '#4F46E5' },
+        { label: 'Fusion', value: 90, color: '#10B981' }
+    ];
+
+    const total = skills.reduce((sum, skill) => sum + skill.value, 0);
+    let startAngle = 0;
+
+    skills.forEach(skill => {
+        const sliceAngle = (skill.value / total) * 2 * Math.PI;
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2, canvas.height / 2);
+        ctx.arc(
+            canvas.width / 2,
+            canvas.height / 2,
+            Math.min(canvas.width, canvas.height) / 2,
+            startAngle,
+            startAngle + sliceAngle
+        );
+        ctx.closePath();
+        ctx.fillStyle = skill.color;
+        ctx.fill();
+
+        startAngle += sliceAngle;
+    });
+
+    // Add labels
+    let labelAngle = 0;
+    skills.forEach(skill => {
+        const sliceAngle = (skill.value / total) * 2 * Math.PI;
+        labelAngle += sliceAngle / 2;
+
+        const x = canvas.width / 2 + Math.cos(labelAngle) * (canvas.width / 3);
+        const y = canvas.height / 2 + Math.sin(labelAngle) * (canvas.height / 3);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '16px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(skill.label, x, y);
+
+        labelAngle += sliceAngle / 2;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', createSkillGraph);
+
+// Interactive Blender-to-TensorFlow workflow visualization
+const workflowStages = document.querySelectorAll('.workflow-stage');
+const workflowConnections = document.querySelectorAll('.workflow-connection');
+
+workflowStages.forEach((stage, index) => {
+    stage.addEventListener('mouseenter', () => {
+        stage.classList.add('active');
+        if (index > 0) {
+            workflowConnections[index - 1].classList.add('active');
+        }
+    });
+
+    stage.addEventListener('mouseleave', () => {
+        stage.classList.remove('active');
+        if (index > 0) {
+            workflowConnections[index - 1].classList.remove('active');
+        }
+    });
+});
+
+// Live code snippet toggle (Design ↔ AI implementations)
+const demoTabs = document.querySelectorAll('.demo-tab');
+const demoPanes = document.querySelectorAll('.demo-pane');
+
+demoTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs and panes
+        demoTabs.forEach(t => t.classList.remove('active'));
+        demoPanes.forEach(pane => pane.classList.remove('active'));
+
+        // Add active class to the clicked tab and corresponding pane
+        tab.classList.add('active');
+        const targetPane = document.querySelector(`.demo-pane[data-tab="${tab.dataset.tab}"]`);
+        targetPane.classList.add('active');
+    });
+});
