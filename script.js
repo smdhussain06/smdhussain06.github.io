@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectFilters();
   initSkillsHover();
   initThreeDimensions();
-  initThreeBackground();
   initModal();
 });
 
@@ -375,106 +374,6 @@ function initThreeDimensions() {
       card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
       card.style.boxShadow = 'var(--shadow-sm)';
     });
-  });
-}
-
-// Three.js background for hero section - similar to Sunny Patel's site
-function initThreeBackground() {
-  if (!window.THREE) return;
-  
-  const container = document.querySelector('.hero-section');
-  if (!container) return;
-  
-  // Create scene, camera, and renderer
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ 
-    alpha: true, 
-    antialias: true 
-  });
-  
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  
-  // Create a container for the canvas
-  const threeContainer = document.createElement('div');
-  threeContainer.style.position = 'absolute';
-  threeContainer.style.top = '0';
-  threeContainer.style.left = '0';
-  threeContainer.style.width = '100%';
-  threeContainer.style.height = '100%';
-  threeContainer.style.zIndex = '-1';
-  threeContainer.style.opacity = '0.4';
-  
-  threeContainer.appendChild(renderer.domElement);
-  container.appendChild(threeContainer);
-  
-  // Create stars/particles
-  const geometry = new THREE.BufferGeometry();
-  const count = 1500;
-  
-  const positions = new Float32Array(count * 3);
-  const colors = new Float32Array(count * 3);
-  
-  const colorOptions = [
-    new THREE.Color(0x38bdf8), // Light blue
-    new THREE.Color(0x818cf8), // Purple
-    new THREE.Color(0x22d3ee), // Cyan
-    new THREE.Color(0x60a5fa), // Blue
-  ];
-  
-  for (let i = 0; i < count; i++) {
-    // Position
-    const x = (Math.random() - 0.5) * 10;
-    const y = (Math.random() - 0.5) * 10;
-    const z = (Math.random() - 0.5) * 10;
-    
-    positions[i * 3 + 0] = x;
-    positions[i * 3 + 1] = y;
-    positions[i * 3 + 2] = z;
-    
-    // Color
-    const color = colorOptions[Math.floor(Math.random() * colorOptions.length)];
-    colors[i * 3 + 0] = color.r;
-    colors[i * 3 + 1] = color.g;
-    colors[i * 3 + 2] = color.b;
-  }
-  
-  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-  
-  const material = new THREE.PointsMaterial({
-    size: 0.05,
-    sizeAttenuation: true,
-    transparent: true,
-    alphaTest: 0.5,
-    vertexColors: true
-  });
-  
-  const stars = new THREE.Points(geometry, material);
-  scene.add(stars);
-  
-  // Camera position
-  camera.position.z = 5;
-  
-  // Animation
-  function animate() {
-    requestAnimationFrame(animate);
-    
-    // Simple rotation without mouse following effect
-    stars.rotation.x += 0.0005;
-    stars.rotation.y += 0.0005;
-    
-    renderer.render(scene, camera);
-  }
-  
-  animate();
-  
-  // Resize handler
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
   });
 }
 
