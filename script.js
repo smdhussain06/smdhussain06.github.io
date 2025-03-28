@@ -461,10 +461,22 @@ function initThreeBackground() {
   function animate() {
     requestAnimationFrame(animate);
     
+    // Simple rotation without mouse following effect
     stars.rotation.x += 0.0005;
     stars.rotation.y += 0.0005;
     
+    renderer.render(scene, camera);
+  }
   
+  animate();
+  
+  // Resize handler
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+}
 
 // Modal functionality
 function initModal() {
