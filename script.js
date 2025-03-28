@@ -1,4 +1,4 @@
-// Modern Portfolio JavaScript
+// Modern Portfolio JavaScript inspired by Sunny Patel's website
 
 // Initialize when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingElements();
   initProjectFilters();
   initSkillsHover();
-  initSoundEffects();
   initThreeDimensions();
+  initThreeBackground();
   initModal();
 });
 
@@ -173,7 +173,7 @@ function initScrollAnimations() {
   });
 }
 
-// Create floating elements in hero section
+// Create floating elements in hero section like Sunny Patel's website
 function initFloatingElements() {
   const floatingContainer = document.querySelector('.floating-elements');
   if (!floatingContainer) return;
@@ -347,31 +347,7 @@ function initSkillsHover() {
   });
 }
 
-// Sound effects for neumorphic buttons
-function initSoundEffects() {
-  const buttons = document.querySelectorAll('.neumorphic-button');
-  
-  // Create audio element
-  const audio = new Audio();
-  audio.src = 'https://assets.mixkit.co/sfx/preview/mixkit-modern-technology-select-2870.mp3';
-  audio.volume = 0.2;
-  
-  buttons.forEach(button => {
-    button.addEventListener('mouseenter', () => {
-      const clone = audio.cloneNode();
-      clone.play();
-    });
-    
-    button.addEventListener('click', () => {
-      const clone = audio.cloneNode();
-      clone.volume = 0.3;
-      clone.playbackRate = 1.2;
-      clone.play();
-    });
-  });
-}
-
-// Three.js for 3D card effects
+// Three.js for 3D card effects - enhanced like Sunny Patel's site
 function initThreeDimensions() {
   const cards = document.querySelectorAll('.project-card');
   
@@ -389,14 +365,129 @@ function initThreeDimensions() {
       const rotateY = 15 * mouseX / (cardRect.width / 2);
       const rotateX = -15 * mouseY / (cardRect.height / 2);
       
-      // Apply transform
+      // Apply transform with glow effect
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+      card.style.boxShadow = `0 5px 15px rgba(0,0,0,0.3), 
+                             ${mouseX/25}px ${mouseY/25}px 30px rgba(56, 189, 248, 0.2)`;
     });
     
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+      card.style.boxShadow = 'var(--shadow-sm)';
     });
   });
+}
+
+// Three.js background for hero section - similar to Sunny Patel's site
+function initThreeBackground() {
+  if (!window.THREE) return;
+  
+  const container = document.querySelector('.hero-section');
+  if (!container) return;
+  
+  // Create scene, camera, and renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ 
+    alpha: true, 
+    antialias: true 
+  });
+  
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  
+  // Create a container for the canvas
+  const threeContainer = document.createElement('div');
+  threeContainer.style.position = 'absolute';
+  threeContainer.style.top = '0';
+  threeContainer.style.left = '0';
+  threeContainer.style.width = '100%';
+  threeContainer.style.height = '100%';
+  threeContainer.style.zIndex = '-1';
+  threeContainer.style.opacity = '0.4';
+  
+  threeContainer.appendChild(renderer.domElement);
+  container.appendChild(threeContainer);
+  
+  // Create stars/particles
+  const geometry = new THREE.BufferGeometry();
+  const count = 1500;
+  
+  const positions = new Float32Array(count * 3);
+  const colors = new Float32Array(count * 3);
+  
+  const colorOptions = [
+    new THREE.Color(0x38bdf8), // Light blue
+    new THREE.Color(0x818cf8), // Purple
+    new THREE.Color(0x22d3ee), // Cyan
+    new THREE.Color(0x60a5fa), // Blue
+  ];
+  
+  for (let i = 0; i < count; i++) {
+    // Position
+    const x = (Math.random() - 0.5) * 10;
+    const y = (Math.random() - 0.5) * 10;
+    const z = (Math.random() - 0.5) * 10;
+    
+    positions[i * 3 + 0] = x;
+    positions[i * 3 + 1] = y;
+    positions[i * 3 + 2] = z;
+    
+    // Color
+    const color = colorOptions[Math.floor(Math.random() * colorOptions.length)];
+    colors[i * 3 + 0] = color.r;
+    colors[i * 3 + 1] = color.g;
+    colors[i * 3 + 2] = color.b;
+  }
+  
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  
+  const material = new THREE.PointsMaterial({
+    size: 0.05,
+    sizeAttenuation: true,
+    transparent: true,
+    alphaTest: 0.5,
+    vertexColors: true
+  });
+  
+  const stars = new THREE.Points(geometry, material);
+  scene.add(stars);
+  
+  // Camera position
+  camera.position.z = 5;
+  
+  // Animation
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    stars.rotation.x += 0.0005;
+    stars.rotation.y += 0.0005;
+    
+    // Mouse movement effect
+    const mouseX = (window.mouseX || 0) - window.innerWidth / 2;
+    const mouseY = (window.mouseY || 0) - window.innerHeight / 2;
+    
+    stars.rotation.x += (mouseY * 0.00001);
+    stars.rotation.y += (mouseX * 0.00001);
+    
+    renderer.render(scene, camera);
+  }
+  
+  // Track mouse position
+  window.addEventListener('mousemove', (event) => {
+    window.mouseX = event.clientX;
+    window.mouseY = event.clientY;
+  });
+  
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+  
+  animate();
 }
 
 // Modal functionality
@@ -450,7 +541,7 @@ function initModal() {
   });
 }
 
-// Add CSS for floating elements and neural network
+// Add CSS for floating elements and neural network with modern color scheme
 document.head.insertAdjacentHTML('beforeend', `
 <style>
   .floating-icon {
@@ -462,11 +553,11 @@ document.head.insertAdjacentHTML('beforeend', `
   }
   
   .floating-icon.design {
-    color: #06B6D4;
+    color: #38bdf8;
   }
   
   .floating-icon.ai {
-    color: #D946EF;
+    color: #818cf8;
   }
   
   .neural-network {
@@ -481,7 +572,7 @@ document.head.insertAdjacentHTML('beforeend', `
   .neural-path {
     fill: none;
     stroke-width: 1;
-    stroke: rgba(79, 70, 229, 0.3);
+    stroke: rgba(56, 189, 248, 0.3);
     stroke-dasharray: 200;
     stroke-dashoffset: 200;
   }
@@ -503,7 +594,7 @@ document.head.insertAdjacentHTML('beforeend', `
     bottom: 0;
     left: 0;
     height: 3px;
-    background: linear-gradient(90deg, #06B6D4, #4F46E5);
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
     transition: width 0.3s ease;
   }
   
@@ -528,6 +619,45 @@ document.head.insertAdjacentHTML('beforeend', `
   
   .burger.toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
+  }
+  
+  /* Add glowing effect on button hover */
+  .neumorphic-button:hover {
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+  }
+  
+  /* Social ribbon styling - now visible and styled like Sunny's */
+  .social-ribbon {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 100;
+  }
+  
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+  }
+  
+  .social-icon:hover {
+    transform: translateY(-3px);
+    color: white;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
 </style>
 `);

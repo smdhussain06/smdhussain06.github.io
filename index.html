@@ -3,25 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Hussain | Designer + AI Engineer</title>
-    <meta name="description" content="Mohammed Hussain - Designer and AI Engineer building digital experiences">
+    <title>SMD Hussain | Designer + AI Engineer</title>
+    <meta name="description" content="Graphic Designer turned AI Engineer crafting adaptive visual experiences that merge pixel perfection with machine intelligence">
+    <meta name="keywords" content="graphic design, AI engineer, portfolio, data science, visual design, Adobe, TensorFlow, Python">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js for 3D effects -->
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Social ribbon -->
+    <div class="social-ribbon">
+        <a href="https://linkedin.com/" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- Contact ribbon -->
+    <div class="contact-ribbon">
+        <a href="#contact" class="contact-button">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+    </div>
+
     <!-- Navigation -->
     <header class="header">
         <div class="container">
             <nav class="navbar">
-                <div class="logo">Mohammed Hussain</div>
+                <div class="logo">SMD</div>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#timeline">Journey</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -37,64 +57,176 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section scroll-animation">
         <div class="container">
-            <h1 class="main-headline">Designer + AI Engineer crafting adaptive visual experiences</h1>
+            <h1 class="main-headline">Bridging Pixel Perfection with Machine Intelligence</h1>
             <div class="subtext">
-                <span>I create thoughtful design solutions and build AI-driven applications. Currently working on generative art projects and AI-enhanced interfaces.</span>
+                <span class="typewriter-text">Graphic Designer → AI Engineer crafting adaptive visual experiences</span>
+            </div>
+            <div class="floating-elements">
+                <!-- SVG elements will be added dynamically with JS -->
             </div>
             <div class="hero-cta">
                 <a href="#projects" class="neumorphic-button">View Projects</a>
-                <a href="#contact" class="neumorphic-button outline">Contact Me</a>
+                <a href="#contact" class="neumorphic-button outline">Let's Connect</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="skills-section scroll-animation">
+    <!-- Skills Matrix -->
+    <section id="skills" class="skills-section scroll-animation">
         <div class="container">
-            <h2 class="section-title">About</h2>
-            
+            <h2 class="section-title">Skills <span>Matrix</span></h2>
             <div class="skills-grid">
+                <!-- Design Arsenal -->
                 <div class="skill-category">
                     <div class="skill-header">
-                        <i class="fas fa-user"></i>
-                        <h3>Who I Am</h3>
+                        <i class="fas fa-palette"></i>
+                        <h3>Design Arsenal</h3>
                     </div>
-                    <p>I'm a designer and AI engineer with a passion for merging creativity with technology. With a background in graphic design and expertise in AI development, I create experiences that are both beautiful and intelligent.</p>
-                    <p>My approach combines technical precision with human-centered design principles to build solutions that are both functional and delightful to use.</p>
+                    <div class="skill-items">
+                        <div class="skill-item" data-experience="4 years" data-level="Advanced">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" alt="Adobe Photoshop">
+                            <span>Photoshop</span>
+                        </div>
+                        <div class="skill-item" data-experience="3 years" data-level="Intermediate">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" alt="Adobe Illustrator">
+                            <span>Illustrator</span>
+                        </div>
+                        <div class="skill-item" data-experience="2 years" data-level="Intermediate">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender">
+                            <span>Blender</span>
+                        </div>
+                        <div class="skill-item" data-experience="3 years" data-level="Advanced">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg" alt="After Effects">
+                            <span>After Effects</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- AI Toolkit -->
                 <div class="skill-category">
                     <div class="skill-header">
-                        <i class="fas fa-laptop-code"></i>
-                        <h3>What I Do</h3>
+                        <i class="fas fa-brain"></i>
+                        <h3>AI Toolkit</h3>
                     </div>
-                    <ul class="skill-list">
-                        <li>Design user interfaces and experiences</li>
-                        <li>Develop AI-powered applications</li>
-                        <li>Create generative art and visualizations</li>
-                        <li>Build interactive data experiences</li>
-                        <li>Craft brand identities and systems</li>
-                    </ul>
+                    <div class="skill-items">
+                        <div class="skill-item" data-experience="3 years" data-level="Advanced">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item" data-experience="2 years" data-level="Intermediate">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="skill-item" data-experience="2 years" data-level="Intermediate">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+                            <span>Data Science</span>
+                        </div>
+                        <div class="skill-item" data-experience="1 year" data-level="Learning">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch">
+                            <span>PyTorch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Storytelling -->
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <i class="fas fa-video"></i>
+                        <h3>Storytelling</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item" data-experience="3 years" data-level="Advanced">
+                            <i class="fas fa-film"></i>
+                            <span>Vlogging</span>
+                        </div>
+                        <div class="skill-item" data-experience="4 years" data-level="Advanced">
+                            <i class="fas fa-sitemap"></i>
+                            <span>Content Strategy</span>
+                        </div>
+                        <div class="skill-item" data-experience="3 years" data-level="Intermediate">
+                            <i class="fas fa-pencil-alt"></i>
+                            <span>Scriptwriting</span>
+                        </div>
+                        <div class="skill-item" data-experience="2 years" data-level="Intermediate">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Digital Marketing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Philosophy -->
+                <div class="skill-category">
+                    <div class="skill-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Core Philosophy</h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item philosophy-item">
+                            <div class="philosophy-icon">
+                                <i class="fas fa-robot"></i>
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <span>"Design That Thinks™"</span>
+                            <p class="philosophy-desc">Creating interfaces and experiences that adapt intelligently to user behavior.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="timeline-section scroll-animation">
+        <div class="container">
+            <h2 class="section-title">My <span>Journey</span></h2>
             <div class="timeline">
-                <div class="timeline-item" data-year="2025">
+                <div class="timeline-item" data-year="2019">
                     <div class="timeline-content">
-                        <h3>Currently</h3>
-                        <p>Working on generative art projects and AI-driven interactive experiences.</p>
+                        <h3>Freelance Design Career Launch</h3>
+                        <p>Started freelancing as a graphic designer, specializing in branding and UI/UX for startups.</p>
+                        <span class="timeline-tag design">Design</span>
                     </div>
                 </div>
-                <div class="timeline-item" data-year="2023">
+                <div class="timeline-item" data-year="2020">
                     <div class="timeline-content">
-                        <h3>Previously</h3>
-                        <p>Specialized in data visualization techniques using Python and D3.js.</p>
+                        <h3>3D Design Exploration</h3>
+                        <p>Expanded skill set to include 3D modeling and animation using Blender for client projects.</p>
+                        <span class="timeline-tag design">Design</span>
                     </div>
                 </div>
                 <div class="timeline-item" data-year="2021">
                     <div class="timeline-content">
-                        <h3>Education</h3>
-                        <p>Bachelor's in AI & Data Science, merging technical knowledge with creative background.</p>
+                        <h3>Bachelor's in AI & Data Science</h3>
+                        <p>Enrolled in AI and Data Science program to merge technical knowledge with creative background.</p>
+                        <span class="timeline-tag ai">Education</span>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2022">
+                    <div class="timeline-content">
+                        <h3>First AI-Enhanced Design Project</h3>
+                        <p>Created a machine learning model to generate custom graphics based on client brand guidelines.</p>
+                        <span class="timeline-tag fusion">Fusion</span>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2023">
+                    <div class="timeline-content">
+                        <h3>Advanced Data Visualization Specialization</h3>
+                        <p>Completed specialized courses in data visualization techniques using Python and D3.js.</p>
+                        <span class="timeline-tag ai">Education</span>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2024">
+                    <div class="timeline-content">
+                        <h3>Launch of Design That Thinks™</h3>
+                        <p>Developed proprietary framework for creating AI-powered adaptive design systems.</p>
+                        <span class="timeline-tag fusion">Fusion</span>
+                    </div>
+                </div>
+                <div class="timeline-item current" data-year="2025">
+                    <div class="timeline-content">
+                        <h3>Exploring New Frontiers</h3>
+                        <p>Currently working on generative art projects and AI-driven interactive experiences.</p>
+                        <span class="timeline-tag current">Present</span>
                     </div>
                 </div>
             </div>
@@ -104,25 +236,51 @@
     <!-- Project Showcase -->
     <section id="projects" class="projects-section scroll-animation">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
-            
+            <h2 class="section-title">Project <span>Showcase</span></h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="design">Pure Design</button>
+                <button class="filter-btn" data-filter="ai">AI-Enhanced</button>
+                <button class="filter-btn" data-filter="fusion">Experimental Fusion</button>
+            </div>
+
             <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
+                <!-- Design Project 1 -->
+                <div class="project-card" data-category="design">
                     <div class="project-image">
-                        <img src="https://source.unsplash.com/random/600x400/?design" alt="Design Project">
+                        <img src="https://source.unsplash.com/random/600x400/?branding" alt="Brand Identity Project">
+                        <div class="project-overlay">
+                            <div class="tech-stack">
+                                <span class="tech-icon"><i class="fab fa-adobe"></i></span>
+                                <span class="tech-icon"><i class="fab fa-figma"></i></span>
+                            </div>
+                            <div class="project-stats">
+                                <span>4 Week Timeline</span>
+                                <span>Full Brand System</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-info">
                         <h3>Verdant Brand Identity</h3>
                         <p>Comprehensive brand identity for eco-friendly startup including logo system, typography, and visual language.</p>
-                        <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="project-link">Case Study <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project-card">
+                <!-- AI Project 1 -->
+                <div class="project-card" data-category="ai">
                     <div class="project-image">
                         <img src="https://source.unsplash.com/random/600x400/?data" alt="Data Visualization">
+                        <div class="project-overlay">
+                            <div class="tech-stack">
+                                <span class="tech-icon"><i class="fab fa-python"></i></span>
+                                <span class="tech-icon"><i class="fas fa-chart-network"></i></span>
+                            </div>
+                            <div class="project-stats">
+                                <span>5K+ Data Points</span>
+                                <span>Interactive Dashboard</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-info">
                         <h3>Urban Mobility Insights</h3>
@@ -131,27 +289,93 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="project-card">
+                <!-- Fusion Project 1 -->
+                <div class="project-card" data-category="fusion">
                     <div class="project-image">
                         <img src="https://source.unsplash.com/random/600x400/?art+technology" alt="Generative Art">
+                        <div class="project-overlay">
+                            <div class="tech-stack">
+                                <span class="tech-icon"><i class="fab fa-python"></i></span>
+                                <span class="tech-icon"><i class="fab fa-js"></i></span>
+                                <span class="tech-icon"><i class="fab fa-adobe"></i></span>
+                            </div>
+                            <div class="project-stats">
+                                <span>Neural Art Generation</span>
+                                <span>Real-time Processing</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-info">
                         <h3>Neuro Canvas</h3>
                         <p>Experimental art installation that translates brain signals into beautiful real-time generative artwork.</p>
-                        <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="project-link">Experience <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Project 4 -->
-                <div class="project-card">
+                <!-- Design Project 2 -->
+                <div class="project-card" data-category="design">
                     <div class="project-image">
                         <img src="https://source.unsplash.com/random/600x400/?ui+design" alt="UI Design Project">
+                        <div class="project-overlay">
+                            <div class="tech-stack">
+                                <span class="tech-icon"><i class="fab fa-sketch"></i></span>
+                                <span class="tech-icon"><i class="fab fa-figma"></i></span>
+                            </div>
+                            <div class="project-stats">
+                                <span>60+ UI Screens</span>
+                                <span>Design System</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-info">
                         <h3>FinTech Platform UI</h3>
                         <p>Comprehensive UI design for financial management application with focus on data visualization and user experience.</p>
-                        <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="project-link">See Design <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- AI Project 2 -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-image">
+                        <img src="https://source.unsplash.com/random/600x400/?machine+learning" alt="AI Project">
+                        <div class="project-overlay">
+                            <div class="tech-stack">
+                                <span class="tech-icon"><i class="fab fa-python"></i></span>
+                                <span class="tech-icon"><i class="fab fa-tensorflow"></i></span>
+                            </div>
+                            <div class="project-stats">
+                                <span>98.7% Accuracy</span>
+                                <span>Computer Vision</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Style Transfer Algorithm</h3>
+                        <p>Custom neural style transfer model that applies artistic styles to images while preserving content integrity.</p>
+                        <a href="#" class="project-link">Technical Overview <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Fusion Project 2 -->
+                <div class="project-card" data-category="fusion">
+                    <div class="project-image">
+                        <img src="https://source.unsplash.com/random/600x400/?web3" alt="Web3 Project">
+                        <div class="project-overlay">
+                            <div class="tech-stack">
+                                <span class="tech-icon"><i class="fab fa-ethereum"></i></span>
+                                <span class="tech-icon"><i class="fab fa-js"></i></span>
+                                <span class="tech-icon"><i class="fab fa-react"></i></span>
+                            </div>
+                            <div class="project-stats">
+                                <span>Blockchain Integration</span>
+                                <span>Generative NFT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Generative NFT Collection</h3>
+                        <p>Algorithm-driven NFT collection that generates unique digital artworks based on blockchain transactions.</p>
+                        <a href="#" class="project-link">Gallery <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -161,7 +385,7 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section scroll-animation">
         <div class="container">
-            <h2 class="section-title">Contact</h2>
+            <h2 class="section-title">Let's <span>Connect</span></h2>
             <p class="contact-intro">Interested in collaborating or just want to say hello? I'd love to hear from you!</p>
             
             <div class="contact-grid">
@@ -176,6 +400,11 @@
                         <h3>Location</h3>
                         <p>Bengaluru, India</p>
                     </div>
+                    <div class="contact-card">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Work Inquiries</h3>
+                        <p>Open for freelance projects and collaborations</p>
+                    </div>
                 </div>
                 
                 <form class="contact-form">
@@ -188,6 +417,10 @@
                         <input type="email" id="email" required>
                     </div>
                     <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" required>
+                    </div>
+                    <div class="form-group">
                         <label for="message">Message</label>
                         <textarea id="message" rows="5" required></textarea>
                     </div>
@@ -197,22 +430,42 @@
         </div>
     </section>
 
+    <!-- Collaboration CTA Modal -->
+    <div class="modal" id="collaborationModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Let's Create Something Amazing</h2>
+            <p>Looking for a combination of design excellence and AI innovation? I'm currently available for select projects.</p>
+            <form class="collab-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Tell me about your project" required></textarea>
+                <button type="submit" class="neumorphic-button">Start a Conversation</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">Mohammed Hussain</div>
-                <p>&copy; 2025 Mohammed Hussain. All Rights Reserved.</p>
+                <div class="footer-logo">SMD</div>
+                <p>&copy; 2025 SMD Hussain. All Rights Reserved.</p>
+                <p class="footer-tagline">Design That Thinks™</p>
             </div>
             <div class="footer-social">
                 <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- GSAP for animations -->
+    <!-- Background Pattern -->
+    <div class="bg-pattern"></div>
+
+    <!-- GSAP & Other JavaScript libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
