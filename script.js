@@ -464,31 +464,7 @@ function initThreeBackground() {
     stars.rotation.x += 0.0005;
     stars.rotation.y += 0.0005;
     
-    // Mouse movement effect
-    const mouseX = (window.mouseX || 0) - window.innerWidth / 2;
-    const mouseY = (window.mouseY || 0) - window.innerHeight / 2;
-    
-    stars.rotation.x += (mouseY * 0.00001);
-    stars.rotation.y += (mouseX * 0.00001);
-    
-    renderer.render(scene, camera);
-  }
   
-  // Track mouse position
-  window.addEventListener('mousemove', (event) => {
-    window.mouseX = event.clientX;
-    window.mouseY = event.clientY;
-  });
-  
-  // Handle window resize
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-  
-  animate();
-}
 
 // Modal functionality
 function initModal() {
