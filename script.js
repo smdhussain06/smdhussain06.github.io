@@ -378,7 +378,24 @@ function initThreeDimensions() {
   });
 }
 
-
+// Three.js background for hero section - similar to Sunny Patel's site
+function initThreeBackground() {
+  if (!window.THREE) return;
+  
+  const container = document.querySelector('.hero-section');
+  if (!container) return;
+  
+  // Create scene, camera, and renderer
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ 
+    alpha: true, 
+    antialias: true 
+  });
+  
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  
   // Create a container for the canvas
   const threeContainer = document.createElement('div');
   threeContainer.style.position = 'absolute';
