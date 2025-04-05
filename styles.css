@@ -335,6 +335,8 @@ nav {
   align-items: center;
   padding-top: 6rem;
   position: relative;
+  /* Reduce bottom padding to decrease gap */
+  padding-bottom: 2rem;
 }
 
 .home-container {
@@ -772,6 +774,15 @@ nav {
   background-color: var(--bg-secondary);
   border-radius: 20px;
   color: var(--text-secondary);
+}
+
+.blog-item img {
+    border-radius: 15px; /* Adds rounded corners to linked images */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.blog-item img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
 }
 
 /* ===== TESTIMONIALS SECTION ===== */
@@ -1317,192 +1328,801 @@ main, footer {
     padding: 10px 20px;
     font-size: 0.85rem;
   }
-}
 
-/* ===== OPTIMIZATIONS FOR LOW-END MOBILE DEVICES ===== */
+  header {
+    padding: 1.5rem 0; /* Increase padding for header */
+  }
 
-/* Fix for About Me image on mobile */
-.about-image {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+  #home {
+    padding-top: 10rem; /* Increase top padding for hero section */
+    padding-bottom: 4rem; /* Increase bottom padding for hero section */
+  }
 
-/* Ensure 3D model displays correctly on mobile */
-.spline-container {
-  width: 100%;
-  height: 380px;
-  position: relative;
-  margin: 0 auto;
-  z-index: 1;
-}
+  h1 {
+    font-size: 2.5rem; /* Increase font size for hero title */
+  }
 
-.spline-container spline-viewer {
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 300px !important;
-}
+  .profession {
+    font-size: 2rem; /* Increase font size for profession text */
+  }
 
-/* Mobile-first optimizations for low-end devices */
-@media (max-width: 767px) {
-  /* Reduce animations for better performance */
-  * {
-    animation-duration: 0.3s !important;
-    transition-duration: 0.3s !important;
+  .intro {
+    font-size: 1.2rem; /* Increase font size for intro text */
   }
-  
-  /* Lighter box shadows for better rendering */
-  .portfolio-item, .testimonial-item, .theme-toggle, .back-to-top {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  /* General adjustments for mobile */
+  body {
+    font-size: 14px; /* Slightly smaller font size for better readability */
+    line-height: 1.8; /* Improved line spacing */
   }
-  
-  /* Optimize 3D model container for mobile */
-  .spline-container {
-    height: 320px;
-    max-width: 280px;
-    transform: scale(1.1);
-    margin-bottom: 20px;
+
+  header {
+    padding: 1.5rem 0; /* Increase padding for better touch targets */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   }
-  
-  /* Fix About Me image display on mobile */
-  .about-image {
-    height: 250px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto 20px;
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+
+  nav {
+    padding: 0 1rem; /* Reduce padding for compact navigation */
   }
-  
-  /* Prevent text overflow */
-  p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    -ms-word-break: break-all;
-    word-break: break-word;
+
+  #home {
+    padding-top: 8rem; /* Adjust top padding for hero section */
+    padding-bottom: 3rem; /* Adjust bottom padding */
+    text-align: center; /* Center-align content for better focus */
   }
-  
-  /* Adjust spacing to prevent overlapping */
+
+  h1 {
+    font-size: 2.2rem; /* Adjust font size for hero title */
+    margin-bottom: 1rem; /* Add spacing below title */
+  }
+
+  .profession {
+    font-size: 1.8rem; /* Adjust font size for profession text */
+    margin-bottom: 1rem; /* Add spacing below profession */
+  }
+
+  .intro {
+    font-size: 1rem; /* Adjust font size for intro text */
+    margin-bottom: 2rem; /* Add spacing below intro */
+  }
+
+  .btn {
+    padding: 10px 20px; /* Adjust button padding for better touch targets */
+    font-size: 0.9rem; /* Adjust font size for buttons */
+    border-radius: 25px; /* Softer button corners */
+  }
+
+  .social-icons a {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem; /* Adjust icon size */
+  }
+
   .section {
-    padding: 60px 0;
-    overflow: hidden;
+    padding: 60px 0; /* Reduce section padding for compact layout */
   }
-  
-  .container {
-    padding: 0 15px;
+
+  .about-content,
+  .contact-content {
+    flex-direction: column; /* Stack content vertically */
+    gap: 2rem; /* Add spacing between items */
   }
-  
-  /* Make buttons more tappable on mobile */
-  .btn, .skill-category, .portfolio-filter, 
-  .nav-links a, .social-icons a, .footer-social a {
-    min-height: 44px;
-    min-width: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Fix spacing in forms */
-  .form-group input, 
-  .form-group textarea {
-    padding: 12px 10px;
-  }
-  
-  /* Fix portfolio grid for small screens */
+
   .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Smaller grid items */
+    gap: 1rem; /* Reduce gap between items */
   }
-  
-  /* Adjust testimonial items */
-  .testimonial-item {
-    padding: 20px 15px;
+
+  footer {
+    padding: 2rem 1rem; /* Compact footer padding */
+    text-align: center; /* Center-align footer content */
   }
-  
-  /* Better spacing for skills section */
-  .skills-categories {
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .skill-category {
-    padding: 8px 15px;
-    margin-bottom: 5px;
-  }
-  
-  /* Prevent social icons from shrinking too much */
-  .social-icons a, 
+
   .footer-social a {
-    width: 40px !important;
-    height: 40px !important;
+    width: 35px;
+    height: 35px; /* Smaller social icons */
+  }
+
+  .back-to-top {
+    width: 40px;
+    height: 40px; /* Smaller back-to-top button */
+    bottom: 20px;
+    right: 20px; /* Adjust position */
+  }
+
+  .nav-links {
+    display: none; /* Hide navigation links */
+  }
+
+  .nav-toggle {
+    display: flex; /* Show hamburger menu */
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 999; /* Ensure it appears above other elements */
+  }
+
+  .nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 3px 0;
+    transition: all var(--transition-normal);
+  }
+
+  .nav-links.active {
+    display: flex; /* Show navigation links when active */
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(var(--bg-color-rgb), 0.95);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 998;
+  }
+
+  .nav-links a {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 60px; /* Adjust position to accommodate hamburger menu */
   }
 }
 
-/* Ultra small screens */
-@media (max-width: 360px) {
-  html {
+/* ===== MOBILE OPTIMIZATION ===== */
+@media (max-width: 480px) {
+  /* Core typography improvements */
+  body {
     font-size: 14px;
+    line-height: 1.6;
   }
   
-  .spline-container {
-    height: 280px;
-    transform: scale(1);
+  /* Header and navigation refinements */
+  header {
+    padding: 1rem 0;
   }
   
-  .about-image {
-    height: 200px !important;
+  nav {
+    padding: 0.5rem 1rem;
+  }
+  
+  .logo a {
+    font-size: 1.6rem; /* Slightly smaller logo */
+  }
+  
+  /* Clean hamburger menu */
+  .nav-toggle {
+    margin-right: 8px;
+  }
+  
+  .nav-toggle span {
+    width: 22px;
+    height: 2px;
+    margin: 4px 0;
+  }
+  
+  /* Improved mobile navigation overlay */
+  .nav-links.active {
+    background-color: rgba(var(--bg-color-rgb), 0.97);
+  }
+  
+  .nav-links a {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    padding: 0.8rem 0;
+  }
+  
+  /* Theme toggle position */
+  .theme-toggle {
+    width: 35px;
+    height: 35px;
+    top: 17px;
+    right: 55px;
+  }
+  
+  /* Hero section adjustments */
+  #home {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+    min-height: auto;
   }
   
   h1 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+    margin-bottom: 0.7rem;
   }
   
-  h2 {
-    font-size: 1.5rem;
+  .profession {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .intro {
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.7;
+  }
+  
+  /* Clean, minimal CTA buttons */
+  .cta-buttons {
+    gap: 0.8rem;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Optimized spacing for social icons */
+  .social-icons {
+    gap: 1rem;
+  }
+  
+  .social-icons a {
+    width: 38px;
+    height: 38px;
+    border-width: 1.5px;
+  }
+  
+  /* Section spacing and layout */
+  .section {
+    padding: 50px 0;
   }
   
   .section-header {
-    margin-bottom: 2rem;
-  }
-}
-
-/* Reduce memory usage for low-end devices */
-@media (max-width: 767px) {
-  /* Remove cursor animation on mobile */
-  .cursor-dot, .cursor-outline {
-    display: none !important;
+    margin-bottom: 2.5rem;
   }
   
-  /* Simplify or remove complex animations */
-  .portfolio-item:hover .portfolio-image img,
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  /* Grid layout optimizations */
+  .portfolio-grid,
+  .blog-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  /* Compact form elements */
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Footer refinements */
+  footer {
+    padding: 2.5rem 0 1rem;
+  }
+  
+  .footer-content {
+    margin-bottom: 2rem;
+  }
+  
+  .footer-logo a {
+    font-size: 1.5rem;
+  }
+  
+  .footer-social a {
+    width: 34px;
+    height: 34px;
+  }
+  
+  /* Clean back-to-top button */
+  .back-to-top {
+    width: 38px;
+    height: 38px;
+    bottom: 18px;
+    right: 18px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Performance optimizations */
+  .portfolio-item:hover,
   .social-icons a:hover,
   .footer-social a:hover,
   .btn:hover {
-    transform: none !important;
+    transform: none; /* Remove hover animations for better performance */
   }
   
-  /* Reduce layout shifts during loading */
-  .home-container, 
-  .about-content,
-  .contact-content {
-    min-height: 0 !important;
+  /* Optimize images for mobile performance */
+  img {
+    will-change: transform;
   }
 }
 
-/* High-contrast mode for visibility */
-@media (prefers-contrast: high) {
-  :root {
-    --primary-color: #ff4500;
-    --text-color: #000000;
-    --bg-color: #ffffff;
-    --text-secondary: #333333;
+/* Reduce top padding to decrease gap */
+#about {
+  padding-top: 2rem;
+}
+
+@media (max-width: 480px) {
+  /* Fix for About Me image not showing */
+  .about-image {
+    display: block; /* Ensure the image container is visible */
+    width: 100%; /* Make it responsive */
+    height: 250px; /* Set a fixed height for better visibility */
+    background-size: cover; /* Ensure the image covers the container */
+    background-position: center; /* Center the image */
   }
-  
-  .dark-mode {
-    --text-color: #ffffff;
-    --bg-color: #000000;
-    --text-secondary: #dddddd;
+
+  /* Fix for overlapping header buttons */
+  .theme-toggle {
+    top: 15px; /* Adjust position to avoid overlap */
+    right: 50px; /* Provide more space from the edge */
+  }
+
+  .nav-toggle {
+    top: 15px; /* Align with theme toggle */
+    right: 10px; /* Adjust spacing */
+  }
+
+  header {
+    padding: 1rem 0; /* Adjust padding for better spacing */
+  }
+}
+
+/* Mobile view adjustments */
+@media (max-width: 480px) {
+  header {
+    position: fixed;
+    width: 100%;
+    background: var(--bg-color);
+    z-index: 1000;
+  }
+
+  nav {
+    position: relative;
+    padding: 1rem;
+  }
+
+  .theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 60px;
+    z-index: 1001;
+  }
+
+  .nav-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1001;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Fixed header positioning */
+  header {
+    position: fixed;
+    width: 100%;
+    background: var(--bg-color);
+    z-index: 990;
+    padding: 0.8rem 0;
+  }
+
+  /* Navigation container */
+  nav {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  /* Logo positioning */
+  .logo {
+    position: relative;
+    z-index: 1000;
+  }
+
+  /* Theme toggle positioning */
+  .theme-toggle {
+    position: fixed;
+    top: 1.2rem;
+    right: 4rem;
+    width: 32px;
+    height: 32px;
+    z-index: 995;
+  }
+
+  /* Hamburger menu positioning */
+  .nav-toggle {
+    position: fixed;
+    top: 1.2rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    z-index: 1000;
+  }
+
+  /* About section image fix */
+  .about-content {
+    padding-top: 2rem;
+  }
+
+  .about-image {
+    width: 100%;
+    height: 300px;
+    background-size: cover !important;
+    background-position: center !important;
+    margin: 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Adjust section spacing */
+  #about {
+    padding-top: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Header fixes */
+  header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background: var(--bg-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  nav {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .logo {
+    z-index: 1001;
+  }
+
+  /* Adjust theme toggle and menu positions */
+  .theme-toggle {
+    position: fixed;
+    top: 14px;
+    right: 65px;
+    width: 32px;
+    height: 32px;
+    z-index: 1001;
+  }
+
+  .nav-toggle {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    z-index: 1001;
+  }
+
+  /* Fix About section image */
+  .about-content {
+    margin-top: 2rem;
+  }
+
+  .about-image {
+    width: 100%;
+    min-height: 300px;
+    margin: 0 auto;
+    background-size: cover !important;
+    background-position: center !important;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Adjust spacing for fixed header */
+  #about {
+    padding-top: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Fix header and navigation */
+  header {
+    height: 65px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg-color);
+    z-index: 990;
+  }
+
+  .logo {
+    position: relative;
+    z-index: 1001;
+    margin-left: 1rem;
+  }
+
+  /* Fix theme toggle and hamburger positioning */
+  .theme-toggle {
+    position: fixed;
+    top: 17px;
+    right: 70px;
+    width: 30px;
+    height: 30px;
+    z-index: 1001;
+    background: var(--bg-color);
+  }
+
+  .nav-toggle {
+    position: fixed;
+    top: 17px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    z-index: 1001;
+  }
+
+  /* Fix About section image */
+  .about-content {
+    padding: 1rem;
+  }
+
+  .about-image {
+    width: 100%;
+    height: 300px !important;
+    min-height: 300px;
+    display: block !important;
+    margin: 0 auto;
+    background-size: cover !important;
+    background-position: center !important;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Adjust section spacing */
+  #about {
+    padding-top: 80px;
+    margin-top: 0;
+  }
+
+  /* Fix navigation menu */
+  .nav-links.active {
+    padding-top: 80px;
+  }
+
+  /* Ensure proper spacing for all sections */
+  .section {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Header and navigation fixes */
+  header {
+    height: 60px;
+    background: var(--bg-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 990;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  /* Fixed positioning for buttons */
+  .theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 55px;
+    width: 30px;
+    height: 30px;
+    z-index: 991;
+  }
+
+  .nav-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    z-index: 991;
+  }
+
+  /* About section image fix */
+  .about-content {
+    padding: 1rem;
+  }
+
+  .about-image {
+    width: 100%;
+    height: 250px !important;
+    min-height: 250px;
+    display: block !important;
+    margin: 0 auto;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Adjust content spacing */
+  #about {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Header and Nav */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: var(--bg-color);
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    z-index: 1002;
+    padding: 5px;
+  }
+
+  .theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 60px;
+    width: 35px;
+    height: 35px;
+    z-index: 1002;
+  }
+
+  /* About Section Image */
+  .about-image {
+    width: 100%;
+    height: 300px !important;
+    min-height: 300px !important;
+    display: block !important;
+    background-size: cover !important;
+    background-position: center !important;
+    margin: 1rem auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Section Spacing */
+  #about {
+    padding-top: 80px;
+  }
+
+  /* Navigation Menu */
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-color);
+    padding-top: 80px;
+    z-index: 1001;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Header and Navigation */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: var(--bg-color);
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    z-index: 1002;
+  }
+
+  /* Fixed positioning for theme toggle and menu */
+  .theme-toggle {
+    position: fixed !important;
+    top: 13px !important;
+    right: 60px !important;
+    width: 35px !important;
+    height: 35px !important;
+    z-index: 1002 !important;
+    background: transparent !important;
+  }
+
+  .nav-toggle {
+    position: fixed !important;
+    top: 13px !important;
+    right: 15px !important;
+    width: 35px !important;
+    height: 35px !important;
+    z-index: 1002 !important;
+    display: flex !important;
+    padding: 5px;
+  }
+
+  /* About section image fix */
+  .about-content {
+    flex-direction: column;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  .about-image {
+    width: 100% !important;
+    height: 300px !important;
+    min-height: 300px !important;
+    display: block !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    margin: 0 auto 2rem auto !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Section spacing */
+  #about {
+    padding-top: 80px;
+    margin-top: 0;
+  }
+
+  .section {
+    padding-top: 80px;
+    padding-bottom: 40px;
   }
 }
