@@ -2,8 +2,16 @@
   "version": 3,
   "pages404": true,
   "caseSensitive": false,
-  "basePath": "",
+  "basePath": "/smdhussain06.github.io",
   "redirects": [
+    {
+      "source": "/smdhussain06.github.io/",
+      "destination": "/smdhussain06.github.io",
+      "basePath": false,
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^/smdhussain06\\.github\\.io/$"
+    },
     {
       "source": "/:path+/",
       "destination": "/:path+",
@@ -48,9 +56,9 @@
   "rewrites": {
     "beforeFiles": [
       {
-        "source": "//_next/:path+",
-        "destination": "/_next/:path+",
-        "regex": "^//_next(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))(?:/)?$"
+        "source": "/smdhussain06.github.io//_next/:path+",
+        "destination": "/smdhussain06.github.io/_next/:path+",
+        "regex": "^/smdhussain06\\.github\\.io//_next(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))(?:/)?$"
       }
     ],
     "afterFiles": [],

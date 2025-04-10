@@ -28,8 +28,8 @@ const nextConfig = {
     parallelServerCompiles: true,
   },
   output: 'export', // Ensures static export for hosting platforms like GitHub Pages
-  assetPrefix: '/', // Updated to start with a leading slash for compatibility
-  basePath: '', // Optional: Set a base path if needed for your hosting setup
+  assetPrefix: '/smdhussain06.github.io/', // Adjusted for GitHub Pages hosting
+  basePath: '/smdhussain06.github.io', // Set base path for subdirectory hosting
 };
 
 export default nextConfig;
