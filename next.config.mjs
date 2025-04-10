@@ -27,25 +27,9 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
-}
+  output: 'export', // Ensures static export for hosting platforms like GitHub Pages
+  assetPrefix: '/', // Updated to start with a leading slash for compatibility
+  basePath: '', // Optional: Set a base path if needed for your hosting setup
+};
 
-if (userConfig) {
-  // ESM imports will have a "default" property
-  const config = userConfig.default || userConfig
-
-  for (const key in config) {
-    if (
-      typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
-    ) {
-      nextConfig[key] = {
-        ...nextConfig[key],
-        ...config[key],
-      }
-    } else {
-      nextConfig[key] = config[key]
-    }
-  }
-}
-
-export default nextConfig
+export default nextConfig;
