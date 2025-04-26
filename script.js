@@ -1,10 +1,66 @@
-    // Performance optimizations for mobile
-let lastKnownScrollPosition = 0;
-let ticking = false;
-const debounceDelay = 10; // Reducing animation frequency
+// Performance optimizations for lower-end devices
+const isLowEndDevice = () => {
+    return (
+        navigator.deviceMemory < 4 || // Less than 4GB RAM
+        navigator.hardwareConcurrency <= 4 || // 4 or fewer CPU cores
+        /Android [4-7]/.test(navigator.userAgent) // Older Android devices
+    );
+};
 
-// Lazy load images as they come into viewport
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if it's a low-end device
+    if (isLowEndDevice()) {
+        // Disable 3D model on low-end devices
+        const splineContainer = document.querySelector('.spline-container');
+        if (splineContainer) {
+            splineContainer.innerHTML = '<img src="images/fallback-image.jpg" alt="Profile Image" loading="lazy">';
+        }
+
+        // Reduce animation complexity
+        document.body.classList.add('reduce-motion');
+
+        // Optimize scroll performance
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(() => {
+                    scrollTimeout = null;
+                    // Your scroll handling code
+                }, 150); // Increased throttle time for low-end devices
+            }
+        }, { passive: true });
+
+        // Optimize intersection observer
+        const observerOptions = {
+            rootMargin: '50px',
+            threshold: 0.1
+        };
+
+        // Reduce the frequency of progress bar updates
+        const progressBars = document.querySelectorAll('.progress');
+        progressBars.forEach(bar => {
+            bar.style.transition = 'width 0.5s ease-out';
+        });
+
+        // Optimize image loading
+        const images = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, observerOptions);
+
+        images.forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
+    // Rest of your initialization code
     // Initialize lazy loading
     initLazyLoading();
     
